@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
+import {TestComp} from './components/test'
 
 interface Todo{
   title : string,
@@ -49,6 +50,7 @@ function App() {
             count is: {count}
           </button>
         </p>
+        <TestComp />
         <p>
           Edit <code>App.tsx</code> and save to test HMR updates.
         </p>
