@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
+        <p className='text-4xl'>Hello Vite + Rexasxact!</p>
         <p>
           <button type="button" onClick={() => setCount((count) => count + 1)}>
             count is: {count}
@@ -76,7 +76,7 @@ function App() {
         </div>
         <div>
           <div>
-            <p>タイトル</p>
+            <p className="font-bold text-5xl">タイトル</p>
             <input value={tTitle} onChange={(event) => settTitle(event.target.value)} />
             <p>内容</p>
             <input value={tText} onChange={(event) => settText(event.target.value)} />
