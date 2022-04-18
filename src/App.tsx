@@ -63,11 +63,10 @@ function App() {
             push 7
         </button>
         <div>
-          {/* ここのvalueは直接出力できない？デバック用とかでとりあえず表示したいときとか */}
-          {/* tostringにしたらobject object がでた */}
           {todolist?.map((value) => {
             return (
               <div>
+                <p>{JSON.stringify(value)}</p>
                 <p>タイトル：{value.title}</p>
                 <p>内容：{value.text}</p>
                 <p>終了：{value.done.toString()}</p>
