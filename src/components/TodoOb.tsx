@@ -5,7 +5,6 @@ interface Props{
   todovalue : ITodo
 }
 
-// Functional Component と class Component  もあるけどこれなんですか、、、、、
 const TodoOb = ({todovalue} : Props) => {
     return (
         <>
@@ -23,5 +22,4 @@ const TodoOb = ({todovalue} : Props) => {
     );
 };
 
-          // {JSON.stringify(todovalue)}
 export default TodoOb
