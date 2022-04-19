@@ -1,97 +1,64 @@
 import { useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import {TestComp} from './components/test'
-
-interface Todo{
-  title : string,
-  text: string,
-  done: boolean,
-}
-
+import TodoOb from './components/TodoOb'
+import {ITodo} from './model/ITodo'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [articles, setArticle] = useState([1, 2, 3])
   const [tTitle, settTitle] = useState("")
   const [tText, settText] = useState("")
-  const [tDone, settDone] = useState(false)
 
+  const inputKun = useState<ITodo>()
 
-  const addArticle = (tmp:number)=>{
-    setArticle([...articles,tmp])
+  const testtodo : ITodo = {
+    title:"test todo",
+    text:"あいうえおあお",
   }
-
-  const testtodo : Todo = {
-    title:"jcapsjoc",
-    text:"あいうえおいうｈｗぢｌｖ",
-    done:false
-  }
-  const [todolist,setTodoList] = useState<Todo[]>([testtodo])
+  const [todolist,setTodoList] = useState<ITodo[]>([testtodo])
 
   const addTodo = () => {
-    const ntodo:Todo = {
-      title:tTitle,
-      text:tText,
-      done:false,
+    if (tTitle != "" && tText != ""){
+      console.log(87);
+      const ntodo:ITodo = {
+        title:tTitle,
+        text:tText,
+      }
+      settTitle("")
+      settText("")
+      setTodoList([...todolist,ntodo])
     }
-    setTodoList([...todolist,ntodo])
   }
-
-  // setTodoList([...todolist,testtodo])
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p className='text-4xl'>Hello Vite + Rexasxact!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <TestComp />
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <ul>
-          {articles?.map((value) => {
-            return (
-              <li>{value?.toString()}</li>
-            )
-          })}
-        </ul>
-        <button type="button" onClick={() => addArticle(7)}>
-            push 7
-        </button>
-        <div>
-          {todolist?.map((value) => {
-            return (
-              <div>
-                <p>{JSON.stringify(value)}</p>
-                <p>タイトル：{value.title}</p>
-                <p>内容：{value.text}</p>
-                <p>終了：{value.done.toString()}</p>
-              </div>
-            )
-          })}
-        </div>
-        <div>
-          <div>
-            <p className="font-bold text-5xl">タイトル</p>
-            <input value={tTitle} onChange={(event) => settTitle(event.target.value)} />
-            <p>内容</p>
-            <input value={tText} onChange={(event) => settText(event.target.value)} />
+    <div className='w-full flex justify-center flex-col items-center mt-4' >
+      <div className='w-full max-w-xs'>
+        <div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4' >
+          <div className='mb-4' >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              タイトル
+            </label>
+            <input type="text" value={tTitle} onChange={event => settTitle(event.target.value)} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' ></input>
           </div>
-          <div>
-            <p>{tTitle}</p>
-            <p>{tText}</p>
+          <div className='mb-6' >
+            <label className="block text-gray-700 text-sm font-bold mb-2">
+              内容
+            </label>
+            <input type="text"  value={tText} onChange={event => settText(event.target.value)} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' ></input>
           </div>
-          <button type="button" onClick={() => addTodo()}>
-            ADD
-          </button>
+          <div className='flex justify-end' >
+            <button type="button" onClick={addTodo} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline' >追加</button>
+          </div>
         </div>
-      </header>
+      </div>
+
+      <div className='w-full max-w-xs'>
+        {todolist.map((value) => {
+          return (
+          <div className='w-full'>
+            <TodoOb todovalue={value}></TodoOb>
+          </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
