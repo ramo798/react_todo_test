@@ -17,11 +17,6 @@ const TodoOb = ({todovalue} : Props) => {
             <p className='text-gray-700 text-base'>
               {todovalue.text}
             </p>
-            <div className='flex justify-end'>
-              <button  className='bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border-red-700 rounded'>
-                delete
-              </button>
-            </div>
           </div>
         </div>
         </>

@@ -54,7 +54,7 @@ function App() {
         {todolist.map((value) => {
           return (
           <div className='w-full'>
-            <TodoOb todovalue={value}></TodoOb>
+            <TodoOb todovalue={value} />
           </div>
           )
         })}
